@@ -1,0 +1,42 @@
+// g++ hello.cpp -o hello & hello
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+#define MP make_pair
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> pii;
+void test();
+int main()
+{
+//freopen("input.in","r",stdin);freopen("output.in","w",stdout);
+int t=1;
+//   cin>>t;
+for(int i=1;i<=t;i++)
+{    
+	//cout<<"Case #"<<i<<": ";
+	test();
+cout<<endl;
+}
+return 0;
+}
+void test() 
+{ll n,m,x,y;
+cin>>n>>m>>x>>y;
+ll s=m/x;
+ll e=n;
+ll ans=0;
+while(s<=e)
+{
+ll mid=(s+e)/2;	
+if(mid*x<=(m+(n-mid)*y))
+{ans=mid;
+s=mid+1;
+}
+else
+{
+e=mid-1;	
+}
+}
+cout<<ans;
+}

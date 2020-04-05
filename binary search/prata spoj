@@ -1,0 +1,72 @@
+// g++ hello.cpp -o hello & hello
+#include<bits/stdc++.h>
+#include<iostream>
+using namespace std;
+#define MP make_pair
+typedef long long ll;
+typedef vector<int> vi;
+typedef pair<int,int> pii;
+void test();
+bool sol(int arr[],int n,int mid)
+{int para=0;
+for(int i=1;i<9;i++)
+{
+int time=0;
+int j=0;
+while(time<=mid)
+{j+=i;
+time+=j;
+if(time<=mid)
+{para+=arr[i];
+if(para>=n)return true;
+}
+else
+{
+	break;
+}
+}
+}
+if(para>=n)
+return true;
+else return false;
+}
+int main()
+{
+//freopen("input.in","r",stdin);
+//freopen("output.in","w",stdout);
+int t=1;
+   cin>>t;
+for(int i=1;i<=t;i++)
+{    
+	//cout<<"Case #"<<i<<": ";
+	test();
+cout<<endl;
+}
+return 0;
+}
+void test() 
+{int n,m;
+cin>>m>>n;
+int arr[9]={0};
+for(int i=0;i<n;i++)
+{int t;
+	cin>>t;
+	arr[t]++;
+}
+int s=1;
+int e=m*(m+1)*4;
+int ans=INT_MAX;
+while(s<=e)
+{
+int mid=(s+e)/2;	
+if(sol(arr,m,mid))
+{ans=min(ans,mid);
+e=mid-1;
+}
+else
+{
+s=mid+1;	
+}
+}
+cout<<ans;
+} 
