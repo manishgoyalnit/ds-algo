@@ -43,6 +43,20 @@ return ;
 
 }
 
+void rangeupdate(int *tree,int ss,int se,int l,int r,int increment,int index)
+{
+if(se<l || ss>r)return;
+if(ss==se){ tree[index]+=increment;
+	return;
+	}
+int mid=(ss+se)/2;
+rangeupdate(tree,ss,mid,l,r,increment,2*index);
+
+rangeupdate(tree,mid+1,se,l,r,increment,2*index+1);
+tree[index]=min(tree[2*index],tree[2*index+1]);
+return ;
+
+}
 int main()
 {
 freopen("input.in","r",stdin);freopen("output.in","w",stdout);
