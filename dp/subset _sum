@@ -1,0 +1,50 @@
+#include<iostream>
+#include<bits/stdc++.h>
+
+#include <boost/multiprecision/cpp_int.hpp> 
+using boost::multiprecision::cpp_int; 
+using namespace std;
+int dp[101][10002];
+bool sub(int arr[],int n,int sum)
+{if(sum<0)return false;
+    if(sum==0)return true;
+if(n==0)return false;
+if(dp[n][sum]!=-1)
+{if(dp[n][sum])return true;
+    else return false;
+}
+
+bool temp=sub(arr,n-1,sum) || sub(arr,n-1,sum-arr[n-1]);
+if(temp)dp[n][sum]=1;
+    else dp[n][sum]=0;
+    return temp;
+}
+void test();
+int main()
+ {int t;
+ cin>>t;
+ while(t--){test();cout<<endl;}
+	//code
+	return 0;
+}
+void test()
+{int n;
+cin>>n;
+memset(dp,-1,sizeof(dp));
+int arr[n]={};
+int sum=0;
+    for(int i=0;i<n;i++)
+  {
+      cin>>arr[i];
+      sum+=arr[i];
+  }
+if(sum%2==1)
+{cout<<"NO";}
+else
+{if(sub(arr,n,sum/2))
+    cout<<"YES";
+    else 
+    cout<<"NO";
+}
+    
+}
